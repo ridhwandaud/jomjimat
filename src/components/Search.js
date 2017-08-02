@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-class Dashboard extends Component{
+
+class Search extends Component{
 
   onPressSearch(){
     Actions.search();
@@ -10,21 +11,19 @@ class Dashboard extends Component{
   onPressCamera(){
     Actions.search();
   }
-
-
 	render(){
 		return(
 			<Container>
         <Header>
         	<Left />
           <Body>
-            <Title>Header</Title>
+            <Title>Search</Title>
           </Body>
           <Right />
         </Header>
         <Content>
           <Text>
-            This is Content Section
+            This is Seatch Section
           </Text>
         </Content>
 				<Footer>
@@ -52,4 +51,4 @@ class Dashboard extends Component{
 	}
 }
 
-export default Dashboard;
+export default Search;

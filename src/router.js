@@ -2,6 +2,7 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
+import Search from './components/Search';
 
 const RouterComponent = () => {
 	return(
@@ -12,6 +13,7 @@ const RouterComponent = () => {
 				</Scene>
 				<Scene key="main" hideNavBar>
 					<Scene key="dashboard" component={Dashboard} />
+					<Scene key="search" component={Search} />
 				</Scene>
 			</Scene>
 		</Router>	
