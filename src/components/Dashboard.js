@@ -6,11 +6,7 @@ class Dashboard extends Component{
 		return(
 			<Container>
         <Header>
-          <Left>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Left>
+        	<Left />
           <Body>
             <Title>Header</Title>
           </Body>
@@ -21,10 +17,23 @@ class Dashboard extends Component{
             This is Content Section
           </Text>
         </Content>
-        <Footer>
+				<Footer>
           <FooterTab>
-            <Button full>
-              <Text>Footer</Text>
+            <Button vertical active>
+              <Icon name="apps"/>
+              <Text>Apps</Text>
+            </Button>
+            <Button vertical onPress={() => console.log('Camera')}>
+              <Icon name="camera" />
+              <Text>Camera</Text>
+            </Button>
+            <Button vertical>
+              <Icon active name="navigate" />
+              <Text>Navigate</Text>
+            </Button>
+            <Button vertical>
+              <Icon name="person" />
+              <Text>Contact</Text>
             </Button>
           </FooterTab>
         </Footer>

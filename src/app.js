@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import { Header } from './components/common';
 import Router from './router';
+import { Actions } from 'react-native-router-flux';
 
 class App extends Component{
 
@@ -19,7 +20,14 @@ class App extends Component{
 	    storageBucket: "jom-jimat.appspot.com",
 	    messagingSenderId: "165175587052"
 	  };
+
 	  firebase.initializeApp(config);
+
+    firebase.auth().onAuthStateChanged((user) => {
+    	if (user) {
+      	Actions.main();
+    	} 
+    });
 	}
 
 	render(){
