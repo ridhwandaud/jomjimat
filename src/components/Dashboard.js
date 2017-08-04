@@ -1,55 +1,34 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
-import { Actions } from 'react-native-router-flux';
-class Dashboard extends Component{
+import { View, Text } from 'react-native';
+import { Container, Content } from 'native-base';
+import { TabNavigator } from "react-navigation";
+import { NavigationComponent } from 'react-native-material-bottom-navigation';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Transactions from './scene/Transactions';
+import Budget from './scene/Budget';
 
-  onPressSearch(){
-    Actions.search();
+
+const Dashboard = TabNavigator({
+  Transactions: { screen: Transactions },
+  Budget: { screen: Budget }
+}, {
+  tabBarComponent: NavigationComponent,
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    bottomNavigationOptions: {
+      labelColor: 'white',
+      rippleColor: 'white',
+      tabs: {
+        Transactions: {
+          barBackgroundColor: '#37474F'
+        },
+        Budget: {
+          barBackgroundColor: '#00796B'
+        }
+      }
+    }
   }
+})
 
-  onPressCamera(){
-    Actions.search();
-  }
-
-
-	render(){
-		return(
-			<Container>
-        <Header>
-        	<Left />
-          <Body>
-            <Title>Header</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-          <Text>
-            This is Content Section
-          </Text>
-        </Content>
-				<Footer>
-          <FooterTab>
-            <Button vertical active onPress={this.onPressCamera.bind(this)}>
-              <Icon name="home"/>
-              <Text>Home</Text>
-            </Button>
-            <Button vertical onPress={this.onPressSearch.bind(this)}>
-              <Icon name="search" />
-              <Text>search</Text>
-            </Button>
-            <Button vertical onPress={this.onPressCamera.bind(this)}>
-              <Icon active name="navigate" />
-              <Text>Navigate</Text>
-            </Button>
-            <Button vertical onPress={this.onPressCamera.bind(this)}>
-              <Icon name="person" />
-              <Text>Account</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
-		);
-	}
-}
 
 export default Dashboard;

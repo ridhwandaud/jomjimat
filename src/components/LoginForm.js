@@ -3,8 +3,14 @@ import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
+import { NavigationActions } from 'react-navigation';
 
 class LoginForm extends Component {
+
+  static navigationOptions = {
+    title: 'Music',
+  }
+
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -16,6 +22,14 @@ class LoginForm extends Component {
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
+
+    const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+            NavigationActions.navigate({ routeName: 'Dashboard' })
+        ]
+        });
+    this.props.navigation.dispatch(resetAction);
   }
 
   renderButton(){

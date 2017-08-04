@@ -23,11 +23,11 @@ class App extends Component{
 
 	  firebase.initializeApp(config);
 
-    firebase.auth().onAuthStateChanged((user) => {
-    	if (user) {
-      	Actions.main();
-    	} 
-    });
+    // firebase.auth().onAuthStateChanged((user) => {
+    // 	if (user) {
+    //   	Actions.main();
+    // 	} 
+    // });
 	}
 
 	render(){
