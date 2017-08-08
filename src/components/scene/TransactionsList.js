@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Modal, TouchableHighlight, Input } from 'react-native';
+import { View, Text, Modal, TouchableHighlight } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
-// import { transactionUpdate } from  '../../actions';
+import { Input } from '../common';
+import { transactionUpdate, transactionCreate} from  '../../actions';
 
 class TransactionsList extends Component{
 	static navigationOptions = {
@@ -20,6 +21,14 @@ class TransactionsList extends Component{
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
+
+  onButtonPress() {
+		const { value, note, date } = this.props;
+
+		// this.props.transactionCreate( { value, note, date });
+
+		//this.setModalVisible(!this.state.modalVisible)
+	}
 
 
 	render(){
@@ -57,14 +66,22 @@ class TransactionsList extends Component{
 	              <Input 
 	              	placeholder="RM 0"
 	              	value={this.props.value}
-	              	// onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })} 
+	              	onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })} 
 	              />
 	            </Item>
 	            <Item>
-	              <Input placeholder="Note" />
+	              <Input 
+	              	placeholder="Note"
+	              	value={this.props.note}
+	              	onChangeText={value => this.props.transactionUpdate({ prop: 'note', value })}  
+	              />
 	            </Item>
 	            <Item last>
-	              <Input placeholder="Date" />
+	              <Input 
+	              	placeholder="Date"
+	              	value={this.props.date}
+	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })} 
+	              />
 	            </Item>
 	            <Button block success onPress={()=>{this.setModalVisible(!this.state.modalVisible)}}>
 	          		<Text>Add</Text>
@@ -86,10 +103,10 @@ const styles = {
   },
 };
 
-// const mapStateToProps = (state) => {
-// 	const { value, note, date } = state.transactionForm;
-// 	return { value, note, date };
-// };
+const mapStateToProps = (state) => {
+	const { value, note, date } = state.transactionForm;
+	return { value, note, date };
+};
 
-export default TransactionsList;
-// export default connect (mapStateToProps,{ transactionUpdate })(TransactionsList);
+// export default TransactionsList;
+export default connect (mapStateToProps,{ transactionUpdate })(TransactionsList);

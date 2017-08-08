@@ -6,25 +6,24 @@ import {
 } from './types';
 
 export const transactionUpdate = ({ prop, value }) => {
-	console.log(value);
 	return{
-		type: EMPLOYEE_UPDATE,
+		type: TRANSACTION_UPDATE,
 		payload: { prop, value }
 
 	};
 };
 
-// // save to firebase
-// export const transactionCreate = ({ name, phone, shift }) => {
-// 	const { currentUser } = firebase.auth();
+// save to firebase
+export const transactionCreate = ({ value, note, date }) => {
+	const { currentUser } = firebase.auth();
+	 console.log(state);
+	return (dispatch) => {
+		firebase.database().ref(`/users/${currentUser.uid}/employees`)
+			.push({ value, note, date })
+			.then(() => { 
+				dispatch({ type:TRANSACTION_CREATE })
+				Actions.employeeList({ type: 'reset' }) 
+			});
+	}	
 
-// 	return (dispatch) => {
-// 		firebase.database().ref(`/users/${currentUser.uid}/employees`)
-// 			.push({ name, phone, shift })
-// 			.then(() => { 
-// 				dispatch({ type:EMPLOYEE_CREATE })
-// 				Actions.employeeList({ type: 'reset' }) 
-// 			});
-// 	}	
-
-// };
+};
