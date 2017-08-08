@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, TouchableHighlight } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item, Input } from 'native-base';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
@@ -39,21 +39,32 @@ class TransactionsList extends Component{
           onRequestClose={() => {alert("Modal has been closed.")}}
           >
          <Container>
-	        <Header>
+	        <Header androidStatusBarColor="#ffffff">
 	        	<Left>
 	        		<Button transparent onPress={()=>{this.setModalVisible(!this.state.modalVisible)}}>
 	          		<Icon name='md-close' style={{fontSize: 25}}/>
 	          	</Button>
 	          </Left>
 	          <Body>
-	            <Title>Add Transaction</Title>
+	            <Title>Add</Title>
 	          </Body>
 	          <Right />
 	        </Header>
 	        <Content>
-	          <Text>
-	            This is Content Section
-	          </Text>
+	          <Form>
+	            <Item>
+	              <Input placeholder="RM 0" />
+	            </Item>
+	            <Item>
+	              <Input placeholder="Note" />
+	            </Item>
+	            <Item last>
+	              <Input placeholder="Date" />
+	            </Item>
+	            <Button block success onPress={()=>{this.setModalVisible(!this.state.modalVisible)}}>
+	          		<Text>Add</Text>
+	          	</Button>
+	          </Form>
 	        </Content>
 		     </Container>
         </Modal>
