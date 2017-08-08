@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, TouchableHighlight } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item, Input } from 'native-base';
-// import Icon from 'react-native-vector-icons/MaterialIcons';
+import { connect } from 'react-redux';
+import { View, Text, Modal, TouchableHighlight, Input } from 'react-native';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
+// import { transactionUpdate } from  '../../actions';
 
 class TransactionsList extends Component{
 	static navigationOptions = {
@@ -53,7 +54,11 @@ class TransactionsList extends Component{
 	        <Content>
 	          <Form>
 	            <Item>
-	              <Input placeholder="RM 0" />
+	              <Input 
+	              	placeholder="RM 0"
+	              	value={this.props.value}
+	              	// onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })} 
+	              />
 	            </Item>
 	            <Item>
 	              <Input placeholder="Note" />
@@ -81,4 +86,10 @@ const styles = {
   },
 };
 
+// const mapStateToProps = (state) => {
+// 	const { value, note, date } = state.transactionForm;
+// 	return { value, note, date };
+// };
+
 export default TransactionsList;
+// export default connect (mapStateToProps,{ transactionUpdate })(TransactionsList);
