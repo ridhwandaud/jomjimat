@@ -16,9 +16,8 @@ export const transactionUpdate = ({ prop, value }) => {
 // save to firebase
 export const transactionCreate = ({ value, note, date }) => {
 	const { currentUser } = firebase.auth();
-	 console.log(state);
 	return (dispatch) => {
-		firebase.database().ref(`/users/${currentUser.uid}/employees`)
+		firebase.database().ref(`/users/${currentUser.uid}/transaction`)
 			.push({ value, note, date })
 			.then(() => { 
 				dispatch({ type:TRANSACTION_CREATE })

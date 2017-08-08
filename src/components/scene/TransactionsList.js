@@ -25,23 +25,16 @@ class TransactionsList extends Component{
   onButtonPress() {
 		const { value, note, date } = this.props;
 
-		// this.props.transactionCreate( { value, note, date });
+		this.props.transactionCreate( { value, note, date });
 
-		//this.setModalVisible(!this.state.modalVisible)
+		this.setModalVisible(!this.state.modalVisible)
 	}
 
 
 	render(){
 		return(
 			<View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-        <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="Buy" onPress={() => this.setModalVisible(true)}>
-            <Icon name="md-cart" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-          <ActionButton.Item buttonColor='#3498db' title="Transfer" onPress={() => {}}>
-            <Icon name="md-swap" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-        </ActionButton>
+        <ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => this.setModalVisible(true)} />
         <Modal
           animationType={"slide"}
           transparent={false}
@@ -83,7 +76,7 @@ class TransactionsList extends Component{
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })} 
 	              />
 	            </Item>
-	            <Button block success onPress={()=>{this.setModalVisible(!this.state.modalVisible)}}>
+	            <Button block success onPress={this.onButtonPress.bind(this)}>
 	          		<Text>Add</Text>
 	          	</Button>
 	          </Form>
@@ -109,4 +102,4 @@ const mapStateToProps = (state) => {
 };
 
 // export default TransactionsList;
-export default connect (mapStateToProps,{ transactionUpdate })(TransactionsList);
+export default connect (mapStateToProps,{ transactionUpdate, transactionCreate })(TransactionsList);
