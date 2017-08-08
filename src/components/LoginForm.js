@@ -8,7 +8,7 @@ import { NavigationActions } from 'react-navigation';
 class LoginForm extends Component {
 
   static navigationOptions = {
-    title: 'Music',
+    title: 'Login',
   }
 
   onEmailChange(text) {
@@ -21,7 +21,7 @@ class LoginForm extends Component {
   onButtonPress() {
     const { email, password } = this.props;
 
-    this.props.loginUser({ email, password });
+    
 
     const resetAction = NavigationActions.reset({
         index: 0,
@@ -29,7 +29,9 @@ class LoginForm extends Component {
             NavigationActions.navigate({ routeName: 'Dashboard' })
         ]
         });
-    this.props.navigation.dispatch(resetAction);
+    const navi = () => this.props.navigation.dispatch(resetAction);
+
+    this.props.loginUser({ email, password, navi });
   }
 
   renderButton(){

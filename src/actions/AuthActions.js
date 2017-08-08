@@ -42,7 +42,7 @@ const loginUserFail = (dispatch) => {
   });
 };
 
-const loginUserSuccess = (dispatch, user) => {
+const loginUserSuccess = (dispatch, user, navi) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
