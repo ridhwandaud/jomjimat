@@ -4,12 +4,12 @@ import { Container, Content } from 'native-base';
 import { TabNavigator } from "react-navigation";
 import { NavigationComponent } from 'react-native-material-bottom-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Transactions from './scene/Transactions';
+import TransactionsList from './scene/TransactionsList';
 import Budget from './scene/Budget';
 
 
 const Dashboard = TabNavigator({
-  Transactions: { screen: Transactions },
+  TransactionsList: { screen: TransactionsList },
   Budget: { screen: Budget }
 }, {
   tabBarComponent: NavigationComponent,
@@ -19,7 +19,7 @@ const Dashboard = TabNavigator({
       labelColor: 'white',
       rippleColor: 'white',
       tabs: {
-        Transactions: {
+        TransactionsList: {
           barBackgroundColor: '#37474F'
         },
         Budget: {
