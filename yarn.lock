@@ -3428,6 +3428,12 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-action-button@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/react-native-action-button/-/react-native-action-button-2.7.2.tgz#06f1188e8fe1d18d03fc9060d4b604c9b81bb6ca"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-button@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-native-button/-/react-native-button-2.1.0.tgz#a39e23292922afeea4f7be141dd43e18f1b51876"
@@ -3450,9 +3456,9 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-"react-native-drawer@git+https://github.com/GeekyAnts/react-native-drawer.git":
+"react-native-drawer@https://github.com/GeekyAnts/react-native-drawer":
   version "2.3.0"
-  resolved "git+https://github.com/GeekyAnts/react-native-drawer.git#8d9078516d177c9cb02d2579a6860706d2370d25"
+  resolved "https://github.com/GeekyAnts/react-native-drawer#8d9078516d177c9cb02d2579a6860706d2370d25"
   dependencies:
     prop-types "^15.5.8"
     tween-functions "^1.0.1"
@@ -3463,13 +3469,17 @@ react-native-easy-grid@0.1.15:
   dependencies:
     lodash "^4.11.1"
 
-"react-native-keyboard-aware-scroll-view@git+https://github.com/GeekyAnts/react-native-keyboard-aware-scroll-view.git":
+"react-native-keyboard-aware-scroll-view@https://github.com/GeekyAnts/react-native-keyboard-aware-scroll-view":
   version "0.2.9"
-  resolved "git+https://github.com/GeekyAnts/react-native-keyboard-aware-scroll-view.git#f4805f254d6cc8e3329f5fb224944401f66655db"
+  resolved "https://github.com/GeekyAnts/react-native-keyboard-aware-scroll-view#f4805f254d6cc8e3329f5fb224944401f66655db"
   dependencies:
     create-react-class "^15.6.0"
     prop-types "^15.5.10"
     react-timer-mixin "^0.13.3"
+
+react-native-material-bottom-navigation@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-material-bottom-navigation/-/react-native-material-bottom-navigation-0.5.1.tgz#50339df7243ae1fdbea6f89d6457908f92b90c83"
 
 react-native-router-flux@^4.0.0-beta.15:
   version "4.0.0-beta.15"

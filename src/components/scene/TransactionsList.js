@@ -34,7 +34,7 @@ class TransactionsList extends Component{
 	render(){
 		return(
 			<View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-        <ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => this.setModalVisible(true)} />
+        <ActionButton buttonColor="rgba(0,0,0,1)" onPress={() => this.setModalVisible(true)} />
         <Modal
           animationType={"slide"}
           transparent={false}
@@ -42,14 +42,14 @@ class TransactionsList extends Component{
           onRequestClose={() => {alert("Modal has been closed.")}}
           >
          <Container>
-	        <Header androidStatusBarColor="#ffffff">
+	        <Header androidStatusBarColor="#ffffff" style={{ backgroundColor: 'white' }}>
 	        	<Left>
 	        		<Button transparent onPress={()=>{this.setModalVisible(!this.state.modalVisible)}}>
 	          		<Icon name='md-close' style={{fontSize: 25}}/>
 	          	</Button>
 	          </Left>
 	          <Body>
-	            <Title>Add</Title>
+	            <Title style={{ color: 'black'}}>Add</Title>
 	          </Body>
 	          <Right />
 	        </Header>
@@ -76,8 +76,8 @@ class TransactionsList extends Component{
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })} 
 	              />
 	            </Item>
-	            <Button block success onPress={this.onButtonPress.bind(this)}>
-	          		<Text>Add</Text>
+	            <Button block dark onPress={this.onButtonPress.bind(this)}>
+	          		<Text style={{ color: 'white'}}>Add</Text>
 	          	</Button>
 	          </Form>
 	        </Content>

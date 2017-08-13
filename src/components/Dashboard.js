@@ -13,6 +13,7 @@ const Dashboard = TabNavigator({
   Budget: { screen: Budget }
 }, {
   tabBarComponent: NavigationComponent,
+  animationEnabled: false,
   tabBarPosition: 'bottom',
   tabBarOptions: {
     bottomNavigationOptions: {
@@ -20,10 +21,10 @@ const Dashboard = TabNavigator({
       rippleColor: 'white',
       tabs: {
         TransactionsList: {
-          barBackgroundColor: '#37474F'
+          barBackgroundColor: '#000000'
         },
         Budget: {
-          barBackgroundColor: '#00796B'
+          barBackgroundColor: '#000000'
         }
       }
     }
