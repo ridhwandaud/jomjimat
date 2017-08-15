@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Modal, TouchableHighlight } from 'react-native';
+import { View, Text, Modal, TouchableHighlight, FlatList } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
@@ -34,6 +34,11 @@ class TransactionsList extends Component{
 	render(){
 		return(
 			<View style={{flex:1, backgroundColor: '#f3f3f3'}}>
+				<FlatList
+				  data={[{key: 'a'}, {key: 'b'}]}
+				  renderItem={
+				  	({item}) => <Text>{item.key}</Text>}
+				/>
         <ActionButton buttonColor="rgba(0,0,0,1)" onPress={() => this.setModalVisible(true)} />
         <Modal
           animationType={"slide"}
@@ -56,34 +61,39 @@ class TransactionsList extends Component{
 	        <Content>
 	          <Form>
 	            <Item>
-	              <Input 
+	              <Input
+	              	label="Value" 
 	              	placeholder="RM 0"
 	              	value={this.props.value}
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })} 
 	              />
 	            </Item>
 	            <Item>
-	              <Input 
+	              <Input
+	              	label="Note"  
 	              	placeholder="Note"
 	              	value={this.props.note}
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'note', value })}  
 	              />
 	            </Item>
 	            <Item last>
-	              <Input 
+	              <Input
+	              	label="Date"  
 	              	placeholder="Date"
 	              	value={this.props.date}
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })} 
 	              />
 	            </Item>
-	            <Button block dark onPress={this.onButtonPress.bind(this)}>
-	          		<Text style={{ color: 'white'}}>Add</Text>
-	          	</Button>
+	            <View style={{ padding: 10 }}>
+		            <Button block dark onPress={this.onButtonPress.bind(this)}>
+		          		<Text style={{ color: 'white'}}>Add</Text>
+		          	</Button>
+	          	</View>
 	          </Form>
 	        </Content>
 		     </Container>
         </Modal>
-      </View>	
+  		</View>	
 		)
 	}
 }
