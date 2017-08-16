@@ -21,7 +21,6 @@ export const transactionCreate = ({ value, note, date }) => {
 			.push({ value, note, date })
 			.then(() => { 
 				dispatch({ type:TRANSACTION_CREATE })
-				Actions.employeeList({ type: 'reset' }) 
 			});
 	}	
 

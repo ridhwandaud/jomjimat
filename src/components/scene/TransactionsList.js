@@ -56,7 +56,11 @@ class TransactionsList extends Component{
 	          <Body>
 	            <Title style={{ color: 'black'}}>Add</Title>
 	          </Body>
-	          <Right />
+	          <Right>
+	          	<Button transparent onPress={this.onButtonPress.bind(this)}>
+	          		<Text> Save </Text>
+	          	</Button>
+	          </Right>
 	        </Header>
 	        <Content>
 	          <Form>
@@ -84,11 +88,6 @@ class TransactionsList extends Component{
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })} 
 	              />
 	            </Item>
-	            <View style={{ padding: 10 }}>
-		            <Button block dark onPress={this.onButtonPress.bind(this)}>
-		          		<Text style={{ color: 'white'}}>Add</Text>
-		          	</Button>
-	          	</View>
 	          </Form>
 	        </Content>
 		     </Container>
