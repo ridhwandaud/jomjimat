@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import {	
 	TRANSACTION_UPDATE,
 	TRANSACTION_CREATE,
+	TRANSACTIONS_FETCH_SUCCESS,
 } from './types';
 
 export const transactionUpdate = ({ prop, value }) => {
@@ -23,5 +24,15 @@ export const transactionCreate = ({ value, note, date }) => {
 				dispatch({ type:TRANSACTION_CREATE })
 			});
 	}	
+};
 
+export const transactionsFetch = () => {
+	const { currentUser } = firebase.auth();
+
+	return (dispatch) => {
+		firebase.database().ref(`/users/${currentUser.uid}/transaction`)
+			.on('value',snapshot => {
+				dispatch({ type: TRANSACTIONS_FETCH_SUCCESS, payload: snapshot.val() });
+			});
+	}
 };

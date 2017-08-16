@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { View, Text, Modal, TouchableHighlight, FlatList } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
-import { Input } from '../common';
-import { transactionUpdate, transactionCreate} from  '../../actions';
+import { Input, Card, CardSection } from '../common';
+import { transactionUpdate, transactionCreate, transactionsFetch } from  '../../actions';
 
 class TransactionsList extends Component{
 	static navigationOptions = {
@@ -22,6 +23,12 @@ class TransactionsList extends Component{
     this.setState({modalVisible: visible});
   }
 
+  componentWillMount() {
+		this.props.transactionsFetch();
+
+		//this.createDataSource(this.props);
+	}
+
   onButtonPress() {
 		const { value, note, date } = this.props;
 
@@ -35,9 +42,17 @@ class TransactionsList extends Component{
 		return(
 			<View style={{flex:1, backgroundColor: '#f3f3f3'}}>
 				<FlatList
-				  data={[{key: 'a'}, {key: 'b'}]}
+				  data={this.props.transactions}
 				  renderItem={
-				  	({item}) => <Text>{item.key}</Text>}
+				  	({item}) => 
+				  	<Card>
+				  		<CardSection>
+				  			<View style={{ flexDirection: 'row', justifyContent: 'space-around', }}>
+				  				<Text>{item.note}</Text>
+				  				<Text>{item.value}</Text>
+				  			</View>
+				  		</CardSection>	
+				  	</Card>}
 				/>
         <ActionButton buttonColor="rgba(0,0,0,1)" onPress={() => this.setModalVisible(true)} />
         <Modal
@@ -107,8 +122,15 @@ const styles = {
 
 const mapStateToProps = (state) => {
 	const { value, note, date } = state.transactionForm;
-	return { value, note, date };
+
+	const transactions = _.map(state.transactions, (val, key) => {
+		return { ...val, key};
+	});
+
+	console.log(transactions);
+
+	return { value, note, date, transactions };
 };
 
 // export default TransactionsList;
-export default connect (mapStateToProps,{ transactionUpdate, transactionCreate })(TransactionsList);
+export default connect (mapStateToProps,{ transactionUpdate, transactionCreate, transactionsFetch })(TransactionsList);

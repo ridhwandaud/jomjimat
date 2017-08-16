@@ -6,3 +6,4 @@ export const LOGIN_USER = 'login_user';
 
 export const TRANSACTION_UPDATE = 'transaction_update';
 export const TRANSACTION_CREATE = 'transaction_create';
+export const TRANSACTIONS_FETCH_SUCCESS = 'transactions_fetch_success';
