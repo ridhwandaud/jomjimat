@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { View, Text, Modal, TouchableHighlight, FlatList } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item, Input, Label } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
-import { Input, Card, CardSection } from '../common';
+import { Card, CardSection } from '../common';
 import { transactionUpdate, transactionCreate, transactionsFetch } from  '../../actions';
 
 class TransactionsList extends Component{
@@ -25,8 +25,6 @@ class TransactionsList extends Component{
 
   componentWillMount() {
 		this.props.transactionsFetch();
-
-		//this.createDataSource(this.props);
 	}
 
   onButtonPress() {
@@ -79,26 +77,23 @@ class TransactionsList extends Component{
 	        </Header>
 	        <Content>
 	          <Form>
-	            <Item>
+	            <Item floatingLabel>
+	            	<Label>Value</Label>
 	              <Input
-	              	label="Value" 
-	              	placeholder="RM 0"
 	              	value={this.props.value}
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })} 
 	              />
 	            </Item>
-	            <Item>
-	              <Input
-	              	label="Note"  
-	              	placeholder="Note"
+	            <Item floatingLabel>
+	            	<Label>Note</Label>
+	              <Input 
 	              	value={this.props.note}
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'note', value })}  
 	              />
 	            </Item>
-	            <Item last>
+	            <Item floatingLabel>
+	            	<Label>Date</Label>
 	              <Input
-	              	label="Date"  
-	              	placeholder="Date"
 	              	value={this.props.date}
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })} 
 	              />

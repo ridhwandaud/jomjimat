@@ -8,7 +8,7 @@ import { NavigationActions } from 'react-navigation';
 class LoginForm extends Component {
 
   static navigationOptions = {
-    title: 'Music',
+    title: 'Login',
   }
 
   onEmailChange(text) {
