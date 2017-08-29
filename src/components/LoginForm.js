@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 
 class LoginForm extends Component {
 
-  static navigationOptions = {
-    title: 'Login',
+  componentWillMount(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        Actions.dashboard({type: 'reset'});
+      } 
+     });
   }
 
   onEmailChange(text) {

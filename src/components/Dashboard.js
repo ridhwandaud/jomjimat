@@ -9,10 +9,8 @@ import Budget from './scene/Budget';
 class Dashboard extends Component{
   render(){
     return(
-      <View>
-        <Text>
-          Dashboard
-        </Text>
+      <View style={{flex: 1}}>
+        <TransactionsList />
       </View>
     )
   }

@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { View, Text, Modal, TouchableHighlight, FlatList } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item, Input, Label } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item, Input, Label, Card, CardItem } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
-import { Card, CardSection } from '../common';
 import { transactionUpdate, transactionCreate, transactionsFetch } from  '../../actions';
 
 class TransactionsList extends Component{
-	static navigationOptions = {
-    title: 'Transactions',
-    tabBarLabel: 'Transactions',
-    tabBarIcon: () => (<Icon size={24} color="white" name="md-add" />)
-  }
 
   state = {
     modalVisible: false,
@@ -38,18 +32,18 @@ class TransactionsList extends Component{
 
 	render(){
 		return(
-			<View style={{flex:1, backgroundColor: '#f3f3f3'}}>
+			<View style={{flex:1, paddingHorizontal: 10}}>
 				<FlatList
 				  data={this.props.transactions}
 				  renderItem={
 				  	({item}) => 
 				  	<Card>
-				  		<CardSection>
+				  		<CardItem>
 				  			<View style={{ flexDirection: 'row', justifyContent: 'space-around', }}>
-				  				<Text>{item.note}</Text>
-				  				<Text>{item.value}</Text>
+				  				<Text style={{ flex: 1 }}>{item.note}</Text>
+				  				<Text style={{ flex: 1 }}>{item.value}</Text>
 				  			</View>
-				  		</CardSection>	
+				  		</CardItem>	
 				  	</Card>}
 				/>
         <ActionButton buttonColor="rgba(0,0,0,1)" onPress={() => this.setModalVisible(true)} />
