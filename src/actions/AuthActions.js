@@ -47,11 +47,4 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-
-  // console.log('loginUserrequest');
-  // dispatch(NavigationActions.navigate({ routeName: 'Dashboard' });
-
-  console.log('loginUserSuccess');
-
-  navi();
 };

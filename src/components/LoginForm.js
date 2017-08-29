@@ -22,14 +22,6 @@ class LoginForm extends Component {
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
-
-    const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-            NavigationActions.navigate({ routeName: 'Dashboard' })
-        ]
-        });
-    this.props.navigation.dispatch(resetAction);
   }
 
   renderButton(){
