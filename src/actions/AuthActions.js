@@ -6,7 +6,6 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER
 } from './types';
-import { NavigationActions } from 'react-navigation';
 
 export const emailChanged = (text) => {
   return {
