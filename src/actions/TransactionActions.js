@@ -1,9 +1,10 @@
 import firebase from 'firebase';
-import { 
+import {	
+	TRANSACTION_UPDATE,
 	TRANSACTION_CREATE,
-	TRANSACTION_UPDATE
+	TRANSACTIONS_FETCH_SUCCESS,
 } from './types';
-import { NavigationActions } from 'react-navigation';
+
 
 export const transactionUpdate = ({ prop, value }) => {
 	return{
@@ -16,14 +17,23 @@ export const transactionUpdate = ({ prop, value }) => {
 // save to firebase
 export const transactionCreate = ({ value, note, date }) => {
 	const { currentUser } = firebase.auth();
-
 	return (dispatch) => {
-		firebase.database().ref(`/users/${currentUser.uid}/transactions`)
+		firebase.database().ref(`/users/${currentUser.uid}/transaction`)
 			.push({ value, note, date })
 			.then(() => { 
 				dispatch({ type:TRANSACTION_CREATE })
-				//Actions.employeeList({ type: 'reset' }) 
 			});
 	}	
-
 };
+
+export const transactionsFetch = () => {
+	const { currentUser } = firebase.auth();
+
+	return (dispatch) => {
+		firebase.database().ref(`/users/${currentUser.uid}/transaction`)
+			.on('value',snapshot => {
+				dispatch({ type: TRANSACTIONS_FETCH_SUCCESS, payload: snapshot.val() });
+			});
+	}
+};
+

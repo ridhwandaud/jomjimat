@@ -6,7 +6,7 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER
 } from './types';
-import { NavigationActions } from 'react-navigation';
+import { Actions } from 'react-native-router-flux';
 
 export const emailChanged = (text) => {
   return {
@@ -22,14 +22,14 @@ export const passwordChanged = (text) => {
   };
 };
 
-export const loginUser = ({ email, password, navi }) => {
+export const loginUser = ({ email, password }) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(user => loginUserSuccess(dispatch, user, navi))
+      .then(user => loginUserSuccess(dispatch, user))
       .catch(()=>{
         firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(user => loginUserSuccess(dispatch, user, navi))
+          .then(user => loginUserSuccess(dispatch, user))
           .catch(()=>
             loginUserFail(dispatch));
       });
@@ -48,10 +48,5 @@ const loginUserSuccess = (dispatch, user, navi) => {
     payload: user
   });
 
-  // console.log('loginUserrequest');
-  // dispatch(NavigationActions.navigate({ routeName: 'Dashboard' });
-
-  console.log('loginUserSuccess');
-
-  navi();
+  Actions.dashboard({type: 'reset'});
 };

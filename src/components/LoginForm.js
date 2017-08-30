@@ -3,12 +3,18 @@ import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
-import { NavigationActions } from 'react-navigation';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 
 class LoginForm extends Component {
 
-  static navigationOptions = {
-    title: 'Login',
+
+  componentWillMount(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        Actions.dashboard({type: 'reset'});
+      } 
+     });
   }
 
   onEmailChange(text) {
@@ -20,18 +26,8 @@ class LoginForm extends Component {
 
   onButtonPress() {
     const { email, password } = this.props;
+    this.props.loginUser({ email, password });
 
-    
-
-    const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-            NavigationActions.navigate({ routeName: 'Dashboard' })
-        ]
-        });
-    const navi = () => this.props.navigation.dispatch(resetAction);
-
-    this.props.loginUser({ email, password, navi });
   }
 
   renderButton(){
