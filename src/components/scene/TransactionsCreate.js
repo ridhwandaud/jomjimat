@@ -20,16 +20,15 @@ class Transactions extends Component{
 
 		this.props.transactionCreate( { value, note, date });
 
-		Actions.dashboard();
+		Actions.dashboard({type: 'reset'});
 	}
 
 	render(){
 		return(
-			<View style={{flex: 1,flexDirection: 'column'}}>
 				<Container>
 	        <Header androidStatusBarColor="#ffffff" style={{ backgroundColor: 'white' }}>
 	        	<Left>
-	        		<Button transparent onPress={()=>Actions.pop()}>
+	        		<Button transparent onPress={()=> Actions.pop()}>
 	          		<Icon name='md-close' style={{fontSize: 25}}/>
 	          	</Button>
 	          </Left>
@@ -87,7 +86,6 @@ class Transactions extends Component{
 	          </Form>
 	        </Content>
 		     </Container>
-			</View>		
 		)
 	}
 }

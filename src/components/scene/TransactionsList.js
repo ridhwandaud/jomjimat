@@ -16,7 +16,7 @@ class TransactionsList extends Component{
 
 	render(){
 		return(
-			<View style={{flex:1, paddingHorizontal: 10, backgroundColor: '#ffffff'}}>
+			<View style={{flex:1, paddingHorizontal: 10, backgroundColor: '#ffffff', paddingTop: 20}}>
 				<FlatList
 				  data={this.props.transactions}
 				  renderItem={
