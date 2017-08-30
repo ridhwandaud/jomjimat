@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './components/LoginForm';
 import TransactionsList from './components/scene/TransactionsList';
+import TransactionsCreate from './components/scene/TransactionsCreate';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 
 const RouterComponent = () => {
@@ -13,6 +14,13 @@ const RouterComponent = () => {
 					component={TransactionsList} 
 					title="Dashboard" 
 					intial
+				/>
+				<Scene
+					key="add"
+					component={TransactionsCreate} 
+					intial
+					hideNavBar={true}
+					direction="vertical"
 				/>
 			</Scene>
 		</Router>	
