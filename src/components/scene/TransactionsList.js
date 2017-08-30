@@ -10,7 +10,13 @@ import { Actions } from 'react-native-router-flux';
 
 class TransactionsList extends Component{
 
+	constructor(props) {
+    super(props);
+    this.state = {isLoading: ''};
+  }
+
   componentWillMount() {
+  	this.setState({ isLoading: true });
 		this.props.transactionsFetch();
 	}
 

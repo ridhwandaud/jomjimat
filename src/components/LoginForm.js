@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import { Card, CardSection, Input, Button, Spinner } from './common';
+import { Card, CardSection, Button, Spinner } from './common';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
+import { Container, Header, Content, Form, Item, Input, Label } from 'native-base';
 
 class LoginForm extends Component {
 
@@ -43,34 +44,35 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
+      <Content style={{ backgroundColor: 'white'}}>
+        <Form>
+          <Item floatingLabel>
+            <Label>Email</Label>
+            <Input
             label="Email"
-            placeholder="email@gmail.com"
             onChangeText={this.onEmailChange.bind(this)}
             value={this.props.email}
           />
-        </CardSection>
-
-        <CardSection>
-          <Input
+          </Item>
+          <Item floatingLabel>
+            <Label>Password</Label>
+            <Input
+            label="Email"
             secureTextEntry
-            label="Password"
-            placeholder="password"
             onChangeText={this.onPasswordChange.bind(this)}
             value={this.props.password}
           />
-        </CardSection>
+          </Item>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
 
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
-      </Card>
+          <CardSection>
+            {this.renderButton()}
+          </CardSection>
+        </Form>
+      </Content>
     );
   }
 }
