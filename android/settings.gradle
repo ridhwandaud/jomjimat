@@ -1,3 +1,6 @@
 rootProject.name = 'jomjimat'
 
+include ':react-native-android-toast'
+project(':react-native-android-toast').projectDir = new File(settingsDir, '../node_modules/react-native-android-toast/android')
+
 include ':app'
