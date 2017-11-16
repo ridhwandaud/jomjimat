@@ -77,7 +77,8 @@ class LoginForm extends Component {
 
 const styles = {
   errorTextStyle: {
-    fontSize: 20,
+    padding: 5,
+    fontSize: 16,
     alignSelf: 'center',
     color: 'red'
   }

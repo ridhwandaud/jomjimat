@@ -1,0 +1,36 @@
+rm ../node_modules/react-native/third-party/glog-0.3.4/test-driver
+./gradlew assembleRelease
+adb install -r app/build/outputs/apk/app-release.apk
+
+
+watchman watch-del-all
+rm -rf node_modules
+rm -rf $TMPDIR/react-*
+npm install
+yarn install
+npm start -- --reset-cache
+
+
+
+
+yo rn-toolbox:assets --icon icon.png
+yo rn-toolbox:assets --splash splash.png --ios
+yo rn-toolbox:assets --splash splash.png --android
+
+
+// add support for gif on android
+https://facebook.github.io/react-native/docs/image.html
+
+// notes
+android:allowBackup="true"  in other AndroidManifest.xml under node_modules needs to be deleted
+- comment out @override on any
+// @Override
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return Collections.emptyList();
+    }
+
+// proptypes issue
+change 
+View.propTypes.style
+to
+PropTypes.style

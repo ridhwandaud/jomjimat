@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Form, Item, Input, Label, Card, CardItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -13,7 +13,12 @@ class Transactions extends Component{
 	constructor(props){
     super(props)
 	    this.state = {date:"2016-05-15"}
-	  }
+	}
+
+	// componentDidMount(){
+	// 	console.log('componentDidMount');
+	// 	Actions.refresh({ right: this.renderRightButton });
+	// }
 
 	onButtonPress() {
 		const { value, note, date } = this.props;
@@ -22,6 +27,14 @@ class Transactions extends Component{
 
 		Actions.dashboard({type: 'reset'});
 	}
+
+	// renderRightButton = () => {
+ //    return(
+ //        <TouchableOpacity onPress={this.onButtonPress.bind(this)} >
+ //            <Text style={{ color: 'black' }}> Save </Text>
+ //        </TouchableOpacity>
+ //    );
+	// };
 
 	render(){
 		return(
@@ -33,7 +46,7 @@ class Transactions extends Component{
 	          	</Button>
 	          </Left>
 	          <Body>
-	            <Title style={{ color: 'black'}}>Add</Title>
+	            <Title style={{ color: 'black'}}>Add Transaction</Title>
 	          </Body>
 	          <Right>
 	          	<Button transparent onPress={this.onButtonPress.bind(this)}>
@@ -47,7 +60,8 @@ class Transactions extends Component{
 	            	<Label>Value</Label>
 	              <Input
 	              	value={this.props.value}
-	              	onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })} 
+	              	onChangeText={value => this.props.transactionUpdate({ prop: 'value', value })}
+	              	style={{ fontSize: 20, fontWeight: 'bold', color: 'green'}}
 	              />
 	            </Item>
 	            <Item floatingLabel>
@@ -57,32 +71,13 @@ class Transactions extends Component{
 	              	onChangeText={value => this.props.transactionUpdate({ prop: 'note', value })}  
 	              />
 	            </Item>
-	            <DatePicker
-			        style={{width: 200}}
-			        date={this.props.date}
-			        // date={this.state.date}
-			        mode="date"
-			        placeholder="select date"
-			        format="DD-MM-YYYY"
-			        minDate={moment().format('DD-MM-YYYY')}
-			        maxDate={moment().add(2, 'months').format('DD-MM-YYYY')}
-			        confirmBtnText="Confirm"
-			        cancelBtnText="Cancel"
-			        customStyles={{
-			          dateIcon: {
-			            position: 'absolute',
-			            left: 0,
-			            top: 4,
-			            marginLeft: 0
-			          },
-			          dateInput: {
-			            marginLeft: 36
-			          }
-			          // ... You can check the source to find the other keys.
-			        }}
-			        onDateChange={value => this.props.transactionUpdate({ prop: 'date', value })}
-			        // onDateChange={(date) => {this.setState({date: date})}}
-			      />
+	            <Item floatingLabel>
+	            	<Label>Date</Label>
+	              <Input 
+	              	value={this.props.date}
+	              	onChangeText={value => this.props.transactionUpdate({ prop: 'date', value })}  
+	              />
+	            </Item>
 	          </Form>
 	        </Content>
 		     </Container>
